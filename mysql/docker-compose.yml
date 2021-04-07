@@ -6,8 +6,8 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=shiye1805A
-      - MYSQL_DATABASE=db_seeyii
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=db_test
     restart: on-failure
     volumes:
       - ./_db:/var/lib/mysql
