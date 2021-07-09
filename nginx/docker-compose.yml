@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./config:/etc/nginx/conf.d
+      - /mnt/f/data_dir/workspace/ui:/data/workspace/ui
+    ports:
+     - "80:80"
+    environment:
+     # - NGINX_HOST=foobar.com
+     - NGINX_PORT=80
