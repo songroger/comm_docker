@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  kafdrop:
+    image: openjdk
+    container_name: kafdrop
+    network_mode: bridge
+    restart: always
+    tty: true
+    ports:
+      - 9001:9000
+    volumes:
+      - /mnt/e/pro/kafdrop/:/hairou
+      - /etc/localtime:/etc/localtime
+    working_dir: /hairou
+    command: java -Duser.timezone=GMT+08 -jar kafdrop.jar
+#    command: java -Duser.timezone=GMT+08 -Xdebug -Xrunjdwp:transport=dt_socket,suspend=n,server=y,address=*:5555 -jar application.jar
