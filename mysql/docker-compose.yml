@@ -6,15 +6,15 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=db_test
     restart: on-failure
-    volumes:
-      - ./_db:/var/lib/mysql
-      - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
-    #      - ./my.cnf:/etc/mysql/my.cnf
-      - ./conf:/etc/mysql/conf.d
-      - ./logs:/var/log/mysql
+    # volumes:
+    #   - ./_db:/var/lib/mysql
+    #   - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+    # #      - ./my.cnf:/etc/mysql/my.cnf
+    #   - ./conf:/etc/mysql/conf.d
+    #   - ./logs:/var/log/mysql
 #      - ./binlog:/var/lib/mysql/mysql-bin
     command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
     networks:
