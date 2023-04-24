@@ -1,0 +1,29 @@
+# Using ubuntu:16.04 as base image
+FROM ubuntu:16.04
+
+# Install dependencies for Go
+RUN apt-get update && \
+    apt-get install -y gcc wget
+
+# Install Go
+RUN wget https://go.dev/dl/go1.19.8.linux-amd64.tar.gz && \
+    tar -xvzf go1.19.8.linux-amd64.tar.gz && \
+    mv go /usr/local && \
+    rm -f go1.20.3.linux-amd64.tar.gz
+
+# Set up environment variables
+ENV PATH=$PATH:/usr/local/go/bin
+ENV GOPATH=/go
+
+WORKDIR /app
+# Copy your go code to the container
+COPY go.mod go.sum ./
+
+RUN go mod download
+# Build your go code and output the binary
+# RUN cd /go/src/your-go-project && \
+#    go build -o /go/bin/your-go-binary
+
+# Set the binary as the entry point
+# eg: docker run --rm -v /home/ubuntu/pro:/app gpt-builder
+CMD go build -o app
